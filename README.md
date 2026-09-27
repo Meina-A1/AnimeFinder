@@ -4,6 +4,14 @@ Primeira entrega da disciplina **Programação Web Fullstack**: uma SPA em React
 
 Este projeto toma como referência o `Projeto1-main.zip` desenvolvido anteriormente pelo aluno. Mantém a Nekos.best para imagens e GIFs, o Hook escolhido (`useRef`) e a biblioteca de formulários (React Hook Form). O catálogo AniList complementa a aplicação para encontrar títulos por nome, tags e gêneros.
 
+## Acessar online
+
+Abra o [AnimeFinder no GitHub Pages](https://meina-a1.github.io/AnimeFinder/). O site é estático e consulta as APIs diretamente pelo navegador, sem servidor próprio.
+
+Cada envio à branch `Develop` executa o workflow `.github/workflows/deploy-pages.yml`: instala as dependências, verifica o código, executa os testes, gera o build e publica no GitHub Pages. O build online usa `--base=/AnimeFinder/` para carregar os arquivos no endereço do repositório; o desenvolvimento local mantém a configuração padrão.
+
+Você pode acompanhar a publicação na [aba Actions](https://github.com/Meina-A1/AnimeFinder/actions). O site recebe a atualização após a execução concluir com sucesso.
+
 ## Executar
 
 Requer **Node.js 22.12 ou superior** e npm.
