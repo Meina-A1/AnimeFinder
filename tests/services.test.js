@@ -71,6 +71,30 @@ test('GIFs aproximados de outros animes e categorias não entram na busca Friere
   assert.equal(results[0].url, 'https://nekos.best/api/v2/hug/1.gif')
 })
 
+for (const query of ['rezero', 're:zero', 're zero', '  RÉ-ZÉRO  ']) {
+  test(`busca "${query}" reconhece Re:Zero sem incluir outros animes ou categorias`, async () => {
+    let requestedUrl
+    const matching = [
+      { url: 'https://nekos.best/api/v2/pat/1.gif', anime_name: 'Re:Zero kara Hajimeru Isekai Seikatsu' },
+      { url: 'https://nekos.best/api/v2/pat/2.gif', anime_name: 'Re: Zero kara Hajimeru Isekai Seikatsu (2024)' },
+    ]
+    globalThis.fetch = async (url) => {
+      requestedUrl = new URL(url)
+      return new Response(JSON.stringify({ results: [
+        ...matching,
+        matching[0],
+        { url: 'https://nekos.best/api/v2/pat/3.gif', anime_name: 'Fate Zero' },
+        { url: 'https://nekos.best/api/v2/pat/4.gif', anime_name: 'Ga-Rei: Zero' },
+        { url: 'https://nekos.best/api/v2/sleep/5.gif', anime_name: 'Re:Zero kara Hajimeru Isekai Seikatsu' },
+      ] }))
+    }
+    const results = await getMedia({ query, category: 'pat', mediaType: 'gifs', amount: 6 })
+    assert.deepEqual(results, matching.map((item) => ({ ...item, category: 'pat' })))
+    assert.equal(requestedUrl.searchParams.get('query'), query.trim())
+    assert.equal(requestedUrl.searchParams.get('category'), 'pat')
+  })
+}
+
 test('texto com apenas espaços mantém a busca aleatória por categoria', async () => {
   let requestedUrl
   globalThis.fetch = async (url) => {

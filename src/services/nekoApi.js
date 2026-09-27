@@ -1,7 +1,8 @@
 const API_URL = 'https://nekos.best/api/v2'
 
 function normalizeName(value = '') {
-  return (value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replaceAll('×', 'x').replace(/[^\p{L}\p{N}]+/gu, ' ').trim()
+  // "Re:Zero", "re zero" e "rezero" devem corresponder ao mesmo nome.
+  return (value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replaceAll('×', 'x').replace(/[^\p{L}\p{N}]+/gu, '')
 }
 
 async function getJson(path, signal) {

@@ -29,6 +29,7 @@ O projeto precisa de internet para consultar as APIs e carregar as mídias. Não
 - **Animes:** catálogo com busca de título (`Frieren`) ou palavras-chave (`Yandere`, `Isekai`, `Tsundere`), sugestões dinâmicas e paginação. A busca automática identifica tags e gêneros conhecidos; o seletor permite escolher explicitamente nome ou palavra-chave.
 - Cartões de anime com capa, ano, episódios, nota, sinopse, gêneros e tags, conforme os dados disponíveis no AniList.
 - **GIFs & imagens → Pesquisar:** título de anime para GIFs ou nome de artista para imagens. É possível usar todas as categorias ou escolher uma reação, como `hug` ou `pat`.
+- A comparação dos nomes ignora espaços, pontuação, acentos e maiúsculas: `rezero`, `re:zero` e `re zero` reconhecem os GIFs de Re:Zero retornados pela API.
 - **GIFs & imagens → Aleatório:** geração aleatória por tipo e categoria, com quantidade inteira de 1 a 20, validada pelo React Hook Form.
 - Categorias de mídia obtidas dinamicamente da Nekos.best.
 - Botão **Ver GIFs** nos animes: abre a galeria com o título preenchido e executa a pesquisa.
