@@ -1,0 +1,22 @@
+# Dependências e arquivos gerados
+node_modules/
+dist/
+.npm-cache/
+artifacts/
+coverage/
+*.log
+*.tsbuildinfo
+
+# Documentação local de apoio
+docs/
+
+# Configurações locais e variáveis de ambiente
+*.local
+.env
+.env.*
+!.env.example
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
