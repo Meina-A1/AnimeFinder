@@ -2,7 +2,7 @@ name: Publicar AnimeFinder no GitHub Pages
 
 on:
   push:
-    branches: [Develop]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

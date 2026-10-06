@@ -8,7 +8,7 @@ Este projeto toma como referência o `Projeto1-main.zip` desenvolvido anteriorme
 
 Abra o [AnimeFinder no GitHub Pages](https://meina-a1.github.io/AnimeFinder/). O site é estático e consulta as APIs diretamente pelo navegador, sem servidor próprio.
 
-Cada envio à branch `Develop` executa o workflow `.github/workflows/deploy-pages.yml`: instala as dependências, verifica o código, executa os testes, gera o build e publica no GitHub Pages. O build online usa `--base=/AnimeFinder/` para carregar os arquivos no endereço do repositório; o desenvolvimento local mantém a configuração padrão.
+Cada envio à branch `main` executa o workflow `.github/workflows/deploy-pages.yml`: instala as dependências, verifica o código, executa os testes, gera o build e publica no GitHub Pages. O build online usa `--base=/AnimeFinder/` para carregar os arquivos no endereço do repositório; o desenvolvimento local mantém a configuração padrão.
 
 Você pode acompanhar a publicação na [aba Actions](https://github.com/Meina-A1/AnimeFinder/actions). O site recebe a atualização após a execução concluir com sucesso.
 
@@ -62,7 +62,7 @@ A busca por características utiliza tags e gêneros do AniList, não interpreta
 | Aplicação integrada | O catálogo leva à busca de GIFs do título selecionado; animes e mídias compartilham a coleção de favoritos. |
 | Documentação das ferramentas | Tecnologias descritas neste README e declaração de apoio de IA abaixo. |
 | Responsabilidades dos integrantes | A equipe deve registrar os nomes e as responsabilidades reais antes da entrega. |
-| GitHub público e commits | Repositório AnimeFinder, branch `Develop`; cada integrante deve registrar suas contribuições reais. |
+| GitHub público e commits | Repositório AnimeFinder, branch `main`; cada integrante deve registrar suas contribuições reais. |
 | Apresentação | Demonstração das buscas, GIFs, favoritos e código na data definida pela disciplina. |
 
 Esta entrega implementa a camada **frontend**, conforme o Projeto 1. Um backend poderá ser desenvolvido quando a disciplina solicitar as próximas etapas.
@@ -124,10 +124,10 @@ A pasta `docs/` contém anotações locais de apoio e está excluída do Git, as
 
 ## Repositório e próximos commits
 
-O código está na branch [Develop do AnimeFinder](https://github.com/Meina-A1/AnimeFinder/tree/Develop). Para obter uma cópia:
+O código está na branch [main do AnimeFinder](https://github.com/Meina-A1/AnimeFinder/tree/main). Para obter uma cópia:
 
 ```bash
-git clone --branch Develop https://github.com/Meina-A1/AnimeFinder.git
+git clone --branch main https://github.com/Meina-A1/AnimeFinder.git
 cd AnimeFinder
 npm install
 npm run dev
@@ -139,7 +139,7 @@ Para enviar novas alterações a partir de uma cópia já configurada:
 git status
 git add .
 git commit -m "feat: descrever a alteração realizada"
-git push origin Develop
+git push origin main
 ```
 
 Antes da entrega, registre neste README os integrantes e as responsabilidades. Cada pessoa deve fazer commits reais das atividades que realizar, ao longo do desenvolvimento. Não é possível comprovar cadência de desenvolvimento ou responsabilidade individual apenas pela existência dos arquivos. A apresentação na data estipulada pela disciplina continua obrigatória.

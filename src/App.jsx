@@ -80,13 +80,12 @@ export default function App() {
     <>
       <header className="site-header">
         <div className="header-inner">
-          <button className="brand" type="button" onClick={() => setView('animes')} aria-label="Neko Gallery, descobrir animes"><span className="brand-mark"><Icon name="cat" size={26} /></span><span>neko<span className="brand-light">gallery</span><span className="brand-dot">.</span></span></button>
+          <button className="brand" type="button" onClick={() => setView('animes')} aria-label="Neko Gallery, descobrir animes"><span className="brand-mark"><Icon name="cat" size={26} /></span><span>neko<span className="brand-light">finder</span><span className="brand-dot">.</span></span></button>
           <nav aria-label="Navegação principal">
             <button className={`nav-button ${view === 'animes' ? 'active' : ''}`} type="button" onClick={() => setView('animes')} aria-current={view === 'animes' ? 'page' : undefined}><Icon name="search" size={17} /> Animes</button>
             <button className={`nav-button ${view === 'explore' ? 'active' : ''}`} type="button" onClick={() => setView('explore')} aria-current={view === 'explore' ? 'page' : undefined}><Icon name="grid" size={17} /> GIFs & imagens</button>
             <button className={`nav-button ${view === 'favorites' ? 'active' : ''}`} type="button" onClick={() => setView('favorites')} aria-current={view === 'favorites' ? 'page' : undefined}><Icon name="heart" size={17} /> Favoritos <span className="count-badge">{favorites.length}</span></button>
           </nav>
-          <a className="api-link" href={view === 'animes' ? 'https://anilist.co' : 'https://docs.nekos.best/'} target="_blank" rel="noopener noreferrer">{view === 'animes' ? 'Catálogo AniList' : 'Nekos.best API'} <Icon name="arrow" size={15} /></a>
         </div>
       </header>
 
@@ -107,10 +106,10 @@ export default function App() {
           <p className="sr-only" role="status">{loading && view === 'explore' ? 'Buscando mídias...' : `${displayed.length} ${view === 'favorites' ? 'favoritos' : 'resultados'} na galeria.`}</p>
           <Gallery items={displayed} loading={loading && view === 'explore'} favorites={favorites} onToggleFavorite={toggleFavorite} onOpenGifs={openAnimeGifs} view={view} query={lastSearch?.query} onExplore={() => setView('animes')} />
         </section>}
-        <div className="credit-note"><Icon name="heart" size={15} /><p>Arte merece crédito. Visite a fonte original e conheça os criadores.</p></div>
+        <div className="credit-note"><Icon name="heart" size={15} /><p>Lembre-se de apoiar os mangakas.</p></div>
       </main>
 
-      <footer className="site-footer"><div><span className="footer-brand">nekogallery.</span><span>Projeto 1 · Programação Web Fullstack</span></div><span>Feito com React e um pouquinho de curiosidade <Icon name="sparkles" size={14} /></span></footer>
+      <footer className="site-footer"><div><span className="footer-brand">nekofinder.</span><span>Projeto 1 · Programação Web Fullstack</span></div><span>Feito para ajudar os fans de anime :D <Icon name="sparkles" size={14} /></span></footer>
     </>
   )
 }

@@ -23,8 +23,6 @@ nav { display: flex; gap: 8px; align-items: center; }
 .nav-button.active { background: #f1ecf8; color: var(--purple); }
 .nav-button:hover { color: var(--purple); background: #f7f4fa; }
 .count-badge { min-width: 20px; height: 20px; display: grid; place-items: center; border-radius: 5px; background: #ece6f2; font-size: 11px; padding: 0 4px; }
-.api-link { display: flex; align-items: center; gap: 7px; color: #82798f; font-size: 12px; }
-.api-link:hover { color: var(--purple); }
 .main-container { max-width: 1120px; margin: 0 auto; padding: 0 30px; }
 .hero { display: flex; justify-content: space-between; align-items: center; min-height: 350px; padding: 46px 20px 42px 0; gap: 30px; }
 .eyebrow { display: inline-flex; align-items: center; gap: 7px; color: var(--purple); font-size: 10px; letter-spacing: 1.6px; font-weight: 700; margin-bottom: 16px; }
@@ -152,7 +150,6 @@ h1 span { color: var(--purple); }
 @media (min-width: 1500px) { .hero { padding-top: 56px; padding-bottom: 52px; } }
 @media (max-width: 900px) {
   .header-inner, .main-container { padding-left: 24px; padding-right: 24px; }
-  .api-link { display: none; }
   .hero-art { transform: scale(.85); width: 300px; margin-right: -20px; }
   .hero { gap: 0; }
   .eyebrow { font-size: 9px; letter-spacing: 1px; }
