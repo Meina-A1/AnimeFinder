@@ -126,7 +126,6 @@ O andamento e o resultado de cada publicação ficam disponíveis na [aba Action
 | --- | --- |
 | **Disciplina** | Programação Web Fullstack — Projeto 1. |
 | **Repositório** | [Meina-A1/AnimeFinder](https://github.com/Meina-A1/AnimeFinder), branch `main`. |
-| **Integrantes** | Nomes e responsabilidades ainda não informados. |
 | **Hook implementado** | `useRef` para foco de controles e referência das requisições. |
 | **APIs JSON** | AniList e Nekos.best. |
 | **Biblioteca externa** | React Hook Form. |
