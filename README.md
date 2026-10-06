@@ -1,145 +1,140 @@
-# AnimeFinder — Neko Gallery
+<div align="center">
+  <img src="public/favicon.svg" alt="Ícone do Nekofinder" width="72" height="72" />
+  <h1>Nekofinder</h1>
+  <p>Seu cantinho para descobrir animes, explorar GIFs e guardar favoritos.</p>
+  <p>
+    <img src="https://img.shields.io/badge/React-19-149ECA?logo=react&amp;logoColor=white" alt="React 19" />
+    <img src="https://img.shields.io/badge/Vite-8-7650B8?logo=vite&amp;logoColor=white" alt="Vite 8" />
+    <a href="LICENSE"><img src="https://img.shields.io/badge/Licen%C3%A7a-MIT-7650B8" alt="Licença MIT" /></a>
+    <a href="https://github.com/Meina-A1/AnimeFinder/actions/workflows/deploy-pages.yml"><img src="https://github.com/Meina-A1/AnimeFinder/actions/workflows/deploy-pages.yml/badge.svg?branch=main" alt="Publicação no GitHub Pages" /></a>
+  </p>
+  <p>
+    <a href="https://meina-a1.github.io/AnimeFinder/"><strong>Acessar o site</strong></a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/Meina-A1/AnimeFinder">Repositório</a>
+    &nbsp;·&nbsp;
+    <a href="#executar-localmente">Executar localmente</a>
+  </p>
+</div>
 
-Primeira entrega da disciplina **Programação Web Fullstack**: uma SPA em React para descobrir títulos de anime por nome ou característica, pesquisar imagens e GIFs, e salvar uma coleção de favoritos no navegador.
+---
 
-Este projeto toma como referência o `Projeto1-main.zip` desenvolvido anteriormente pelo aluno. Mantém a Nekos.best para imagens e GIFs, o Hook escolhido (`useRef`) e a biblioteca de formulários (React Hook Form). O catálogo AniList complementa a aplicação para encontrar títulos por nome, tags e gêneros.
+## Sobre o projeto
 
-## Acessar online
+O **Nekofinder** é uma aplicação React para encontrar animes pelo título, gênero ou tag, explorar imagens e GIFs e reunir suas descobertas em uma coleção de favoritos. A navegação acontece em uma única página, sem recarregamentos entre as telas.
 
-Abra o [AnimeFinder no GitHub Pages](https://meina-a1.github.io/AnimeFinder/). O site é estático e consulta as APIs diretamente pelo navegador, sem servidor próprio.
+Desenvolvido para o **Projeto 1 de Programação Web Fullstack**, o projeto implementa o frontend e integra duas APIs públicas: AniList e Nekos.best.
 
-Cada envio à branch `main` executa o workflow `.github/workflows/deploy-pages.yml`: instala as dependências, verifica o código, executa os testes, gera o build e publica no GitHub Pages. O build online usa `--base=/AnimeFinder/` para carregar os arquivos no endereço do repositório; o desenvolvimento local mantém a configuração padrão.
+## O que você pode fazer
 
-Você pode acompanhar a publicação na [aba Actions](https://github.com/Meina-A1/AnimeFinder/actions). O site recebe a atualização após a execução concluir com sucesso.
-
-## Executar
-
-Requer **Node.js 22.12 ou superior** e npm.
-
-```bash
-npm install
-npm run dev
-```
-
-Abra o endereço exibido pelo Vite, normalmente `http://127.0.0.1:5173`.
-
-```bash
-npm run lint     # Verificar o código
-npm test         # Verificar contratos da API e armazenamento
-npm run build    # Gerar a versão de produção em dist/
-npm run preview  # Visualizar a versão de produção
-```
-
-O projeto precisa de internet para consultar as APIs e carregar as mídias. Não requer chave, login, banco de dados ou servidor próprio. O CSS usa fontes do Google Fonts, com fontes locais de substituição caso o serviço esteja indisponível.
-
-## Funcionalidades
-
-- **Animes:** catálogo com busca de título (`Frieren`) ou palavras-chave (`Yandere`, `Isekai`, `Tsundere`), sugestões dinâmicas e paginação. A busca automática identifica tags e gêneros conhecidos; o seletor permite escolher explicitamente nome ou palavra-chave.
-- Cartões de anime com capa, ano, episódios, nota, sinopse, gêneros e tags, conforme os dados disponíveis no AniList.
-- **GIFs & imagens → Pesquisar:** título de anime para GIFs ou nome de artista para imagens. É possível usar todas as categorias ou escolher uma reação, como `hug` ou `pat`.
-- A comparação dos nomes ignora espaços, pontuação, acentos e maiúsculas: `rezero`, `re:zero` e `re zero` reconhecem os GIFs de Re:Zero retornados pela API.
-- **GIFs & imagens → Aleatório:** geração aleatória por tipo e categoria, com quantidade inteira de 1 a 20, validada pelo React Hook Form.
-- Categorias de mídia obtidas dinamicamente da Nekos.best.
-- Botão **Ver GIFs** nos animes: abre a galeria com o título preenchido e executa a pesquisa.
-- GIFs com nome do anime, categoria, resolução, abertura do arquivo e cópia do link para compartilhar manualmente.
-- Favoritos de animes, GIFs e imagens na mesma coleção, com persistência em `localStorage`.
-- Alternância entre os modos sem recarregar a página, preservando os filtros e resultados durante a navegação.
-- Estados de carregamento, galeria vazia, erro de conexão e nova tentativa de carregar categorias.
-- Layout responsivo, controles rotulados, navegação por teclado e indicação de erros.
-
-Os favoritos ficam apenas no navegador utilizado. Não são sincronizados entre dispositivos. Se o armazenamento estiver bloqueado ou cheio, o aplicativo informa que os favoritos duram apenas a sessão. Os arquivos de mídia continuam hospedados na API.
-
-A busca por características utiliza tags e gêneros do AniList, não interpretação livre de frases. Alguns gêneros em português, como `ação`, `comédia` e `terror`, têm tradução para os termos do catálogo. Na galeria, a Nekos.best pode retornar correspondências aproximadas: a aplicação consulta até 20 mídias e mantém apenas as que correspondem ao nome e à categoria, limitadas à quantidade escolhida. Nem todo anime ou reação existe nessa API. Por exemplo, `Frieren + pat` retornou uma mídia no teste; `Frieren + hug` não retornou correspondências naquele momento. Resultados de busca podem ser menores que a quantidade selecionada ou vazios.
-
-## Atendimento aos requisitos
-
-| Requisito | Implementação |
+| Área | Funcionalidades |
 | --- | --- |
-| React.js e SPA | Uma única `index.html`; React atualiza os componentes com estado, sem redirecionamento entre telas. |
-| AJAX e API JSON aberta | `fetch` assíncrono na Nekos.best e requisições GraphQL com JSON ao AniList, nos serviços. |
-| Hook da lista | `useRef` em `SearchForm.jsx` para focar o seletor de categoria; também guarda o pedido em andamento em `App.jsx`. |
-| Biblioteca externa | React Hook Form nos formulários de catálogo e galeria, para registrar campos e validar as buscas. |
-| Aplicação integrada | O catálogo leva à busca de GIFs do título selecionado; animes e mídias compartilham a coleção de favoritos. |
-| Documentação das ferramentas | Tecnologias descritas neste README e declaração de apoio de IA abaixo. |
-| Responsabilidades dos integrantes | A equipe deve registrar os nomes e as responsabilidades reais antes da entrega. |
-| GitHub público e commits | Repositório AnimeFinder, branch `main`; cada integrante deve registrar suas contribuições reais. |
-| Apresentação | Demonstração das buscas, GIFs, favoritos e código na data definida pela disciplina. |
+| **Animes** | Busca por título, gênero ou tag, sugestões e paginação. Cartões com capa, sinopse, ano, episódios e nota, quando disponíveis. |
+| **GIFs & imagens** | Busca de GIFs pelo anime e de imagens pelo artista. Geração aleatória por categoria, com até 20 mídias por busca. |
+| **Favoritos** | Coleção de animes, GIFs e imagens salva no navegador com `localStorage`. |
+| **Integração** | O botão **Ver GIFs** pesquisa as mídias do anime selecionado. Os cartões permitem abrir o GIF e copiar seu link. |
 
-Esta entrega implementa a camada **frontend**, conforme o Projeto 1. Um backend poderá ser desenvolvido quando a disciplina solicitar as próximas etapas.
+O layout se adapta a diferentes tamanhos de tela e inclui navegação por teclado, rótulos nos controles e mensagens de carregamento, erro e resultado vazio.
 
-## Ferramentas de apoio e uso de IA
+### Experimente
 
-Foram utilizados React, React DOM, Vite, React Hook Form, Fetch API, localStorage, ESLint, Node.js, npm e Git/GitHub. O visual usa CSS próprio, ícones SVG e fontes do Google Fonts.
+1. Na aba **Animes**, pesquise um título como `Naruto` ou uma tag como `Isekai`.
+2. Use **Ver GIFs** em um resultado ou abra **GIFs & imagens** para pesquisar e explorar categorias como `hug` e `pat`.
+3. Clique no coração de um cartão e encontre os itens salvos em **Favoritos**.
 
-O **OpenAI Codex** foi utilizado como apoio para analisar o projeto anterior, implementar componentes, buscas, favoritos e estilos, integrar as APIs, preparar a documentação e executar verificações técnicas. A equipe deve revisar e compreender o código para a apresentação, além de registrar as atividades que cada integrante realmente realizou.
+## Tecnologias e React
 
-## APIs
-
-### AniList — catálogo de animes
-
-Endpoint: `POST https://graphql.anilist.co`
-
-As consultas GraphQL são enviadas como JSON com `query` e `variables`. Não são usadas mutações nem autenticação. `GenreCollection` e `MediaTagCollection` fornecem gêneros e sugestões. `Page.media` busca apenas animes, usando `search` para títulos e `tag` ou `genre` para características. Os resultados têm 12 itens por página, com indicação de próxima página. Dados classificados como adultos e tags de spoiler não são exibidos.
-
-Referências oficiais: [introdução](https://docs.anilist.co/guide/introduction), [consulta de mídias](https://github.com/AniList/docs/blob/master/docs/guide/graphql/queries/media.md) e [limitação de requisições](https://docs.anilist.co/guide/rate-limiting). As sinopses e as tags podem estar em inglês.
-
-### Nekos.best — imagens e GIFs
-
-Base: `https://nekos.best/api/v2`
-
-| Endpoint | Uso |
+| Tecnologia | Uso no projeto |
 | --- | --- |
-| `GET /endpoints` | Lista categorias e formatos. |
-| `GET /{categoria}?amount={quantidade}` | Retorna mídias aleatórias e seus metadados. |
-| `GET /search?query={texto}&type={tipo}&amount={quantidade}` | Busca artistas (`type=1`) ou animes (`type=2`), com filtro opcional `category`. |
+| **React e React DOM** | Componentes, estados e navegação da aplicação. |
+| **Vite** | Servidor de desenvolvimento e geração do build. |
+| **React Hook Form** | Registro dos campos e validação dos formulários de busca. |
+| **Fetch API** | Requisições assíncronas às APIs e tratamento das respostas JSON. |
+| **CSS e SVG** | Estilos responsivos, identidade visual e ícones. |
+| **ESLint e Node.js Test Runner** | Verificação do código e testes dos serviços e favoritos. |
 
-Documentação oficial: [introdução](https://docs.nekos.best/getting-started/introduction), [endpoints](https://docs.nekos.best/getting-started/api-endpoints.html) e [referência](https://docs.nekos.best/getting-started/api-reference.html).
+### Hook escolhido: `useRef`
 
-As chamadas são feitas diretamente pelo navegador, que envia seu próprio `User-Agent`. As fontes originais são links externos abertos em nova aba; o fluxo interno continua sendo uma SPA. O limite de 20 resultados vem da API. O serviço pode estar indisponível ou limitar chamadas; o aplicativo mostra um erro e permite uma nova busca.
+Em [SearchForm.jsx](src/components/SearchForm.jsx), `useRef` mantém a referência do seletor de categoria. Quando a galeria está ativa e as categorias estão disponíveis, um `useEffect` usa essa referência para focar o controle.
 
-## Estrutura
+Em [App.jsx](src/App.jsx) e [AnimeExplorer.jsx](src/components/AnimeExplorer.jsx), o mesmo hook guarda o `AbortController` da busca em andamento, permitindo cancelar a requisição anterior ao iniciar outra. Alterar uma referência não provoca uma nova renderização.
 
-```text
-src/
-  App.jsx                 # Estados, busca e navegação da SPA
-  main.jsx                # Montagem do React
-  styles.css              # Visual e responsividade
-  components/
-    SearchForm.jsx        # Formulário, validação e useRef
-    Gallery.jsx           # Listagem, carregamento e estado vazio
-    ImageCard.jsx         # Mídia, créditos e botão de favorito
-    AnimeExplorer.jsx     # Busca de títulos, tags, sugestões e paginação
-    AnimeCard.jsx         # Capa, metadados, favoritos e acesso aos GIFs
-    Icon.jsx              # Ícones SVG pequenos
-  services/
-    nekoApi.js            # AJAX, validação de respostas e API
-    animeApi.js           # Catálogo GraphQL, tags e busca de animes
-    favorites.js          # Leitura e gravação dos favoritos
-tests/
-  animeApi.test.js         # Consultas, filtros e respostas do catálogo
-  services.test.js         # Mídias e armazenamento de favoritos
-```
+A aplicação também usa `useState` para atualizar a interface e `useEffect` para carregar dados e controlar efeitos dos componentes.
 
-A pasta `docs/` contém anotações locais de apoio e está excluída do Git, assim como dependências, builds, caches e arquivos ZIP. O código, os testes e o `package-lock.json` fazem parte do repositório.
+## APIs utilizadas
 
-## Repositório e próximos commits
+| API | Dados e integração |
+| --- | --- |
+| **[AniList](https://docs.anilist.co/guide/introduction)** | Catálogo de animes, capas, sinopses, gêneros e tags. Consultas GraphQL enviadas por `POST` para `https://graphql.anilist.co`, com corpo e resposta em JSON. |
+| **[Nekos.best](https://docs.nekos.best/getting-started/introduction)** | Imagens, GIFs, categorias e metadados. Requisições `GET` para `https://nekos.best/api/v2`. O campo `anime_name` fornece o nome do anime nos cartões de GIFs. |
 
-O código está na branch [main do AnimeFinder](https://github.com/Meina-A1/AnimeFinder/tree/main). Para obter uma cópia:
+As integrações estão em [animeApi.js](src/services/animeApi.js) e [nekoApi.js](src/services/nekoApi.js). As consultas utilizadas são públicas e não exigem chave de API nem login.
+
+### Disponibilidade dos dados
+
+- As buscas e mídias dependem de conexão com a internet e da disponibilidade das APIs.
+- A pesquisa por características usa os gêneros e as tags do AniList. Sinopses e alguns termos podem estar em inglês.
+- Os GIFs disponíveis variam conforme o anime e a reação. Uma busca pode retornar menos itens que o solicitado ou nenhum resultado.
+- Os favoritos ficam no navegador em que foram salvos. Se o armazenamento estiver bloqueado, permanecem apenas durante a sessão.
+
+## Executar localmente
+
+**Pré-requisitos:** Node.js **22.12 ou superior**, npm e Git.
 
 ```bash
 git clone --branch main https://github.com/Meina-A1/AnimeFinder.git
 cd AnimeFinder
-npm install
+npm ci
 npm run dev
 ```
 
-Para enviar novas alterações a partir de uma cópia já configurada:
+Abra o endereço exibido no terminal, normalmente [http://127.0.0.1:5173](http://127.0.0.1:5173).
 
-```bash
-git status
-git add .
-git commit -m "feat: descrever a alteração realizada"
-git push origin main
+### Comandos disponíveis
+
+| Comando | Finalidade |
+| --- | --- |
+| `npm run dev` | Iniciar o servidor local. |
+| `npm run lint` | Verificar o código com ESLint. |
+| `npm test` | Executar os testes dos serviços e favoritos. |
+| `npm run build` | Gerar a versão de produção em `dist/`. |
+| `npm run preview` | Visualizar o build de produção localmente. |
+
+## Estrutura do projeto
+
+```text
+src/
+├── App.jsx             # Navegação, buscas e favoritos
+├── main.jsx            # Montagem da aplicação
+├── styles.css          # Estilos e responsividade
+├── components/         # Formulários, catálogo e cartões
+└── services/           # Integrações com APIs e armazenamento
+tests/                  # Testes dos serviços e favoritos
+public/                 # Ícone da aplicação
+.github/workflows/      # Publicação no GitHub Pages
 ```
 
-Antes da entrega, registre neste README os integrantes e as responsabilidades. Cada pessoa deve fazer commits reais das atividades que realizar, ao longo do desenvolvimento. Não é possível comprovar cadência de desenvolvimento ou responsabilidade individual apenas pela existência dos arquivos. A apresentação na data estipulada pela disciplina continua obrigatória.
+## Publicação
+
+O site está hospedado no **[GitHub Pages](https://meina-a1.github.io/AnimeFinder/)**. Cada envio à branch `main` executa o [workflow de publicação](.github/workflows/deploy-pages.yml), que verifica o código, executa os testes e gera o build com a base `/AnimeFinder/` antes de publicar.
+
+O andamento e o resultado de cada publicação ficam disponíveis na [aba Actions](https://github.com/Meina-A1/AnimeFinder/actions).
+
+## Informações da entrega
+
+| Item | Informação |
+| --- | --- |
+| **Disciplina** | Programação Web Fullstack — Projeto 1. |
+| **Repositório** | [Meina-A1/AnimeFinder](https://github.com/Meina-A1/AnimeFinder), branch `main`. |
+| **Integrantes** | Nomes e responsabilidades ainda não informados. |
+| **Hook implementado** | `useRef` para foco de controles e referência das requisições. |
+| **APIs JSON** | AniList e Nekos.best. |
+| **Biblioteca externa** | React Hook Form. |
+
+### Ferramenta de apoio
+
+O **OpenAI Codex** foi utilizado como apoio na análise do projeto anterior, implementação dos componentes e estilos, integração das APIs, documentação e verificações técnicas.
+
+## Licença
+
+Distribuído sob a [licença MIT](LICENSE). As imagens e os GIFs são fornecidos pelas APIs e pertencem aos respectivos criadores.
